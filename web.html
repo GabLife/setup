@@ -1,31 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Linkvertise Generator</title>
-    <script>
-      function generateLink() {
-        var code = generateRandomCode(); // Generate a random code
-        var url = "https://midsetup.netlify.app/display.html?code=" + code; // Construct the destination URL
-        var link = document.createElement("a"); // Create a new hyperlink element
-        link.href = "https://publisher.linkvertise.com/api/v1/redirect/link/static/380230/" + encodeURIComponent(url); // Construct the Linkvertise link URL with the destination URL as a query parameter
-        link.textContent = "Click here to access the Linkvertise link"; // Set the hyperlink text
-        document.body.appendChild(link); // Add the hyperlink to the document
-      }
-      
-      function generateRandomCode() {
-        // Generate a random 6-digit code
-        var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        var code = "";
-        for (var i = 0; i < 6; i++) {
-          code += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        return code;
-      }
-    </script>
-  </head>
-  <body>
-    <h1>Linkvertise Generator</h1>
-    <p>Press the button below to generate a Linkvertise link:</p>
-    <button onclick="generateLink()">Generate Linkvertise Link</button>
-  </body>
+<head>
+	<meta charset="UTF-8">
+	<title>Link and Code Generator</title>
+	<style>
+		button {
+			margin: 10px;
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			cursor: pointer;
+		}
+		input[type="text"] {
+			margin: 10px;
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			font-size: 16px;
+		}
+		code {
+			margin: 10px;
+			padding: 10px;
+			background-color: #f1f1f1;
+			border-radius: 5px;
+			font-family: "Courier New", Courier, monospace;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Link and Code Generator</h1>
+	<input type="text" id="link-input" placeholder="Enter a URL">
+	<button onclick="generateLink()">Generate Link</button>
+	<div id="link-container"></div>
+	<div id="code-container"></div>
+	<script>
+		function generateLink() {
+			var linkInput = document.getElementById("link-input");
+			var link = linkInput.value;
+			var linkContainer = document.getElementById("link-container");
+			var codeContainer = document.getElementById("code-container");
+			var linkHTML = "<a href='" + link + "'>" + link + "</a>";
+			var codeHTML = "<code>&lt;a href='" + link + "'&gt;" + link + "&lt;/a&gt;</code>";
+			linkContainer.innerHTML = linkHTML;
+			codeContainer.innerHTML = codeHTML;
+		}
+	</script>
+</body>
 </html>

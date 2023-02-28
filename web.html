@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Linkvertise Generator</title>
-  </head>
-  <body>
-    <button id="generate-link">Generate Link</button>
-    <div id="link-container"></div>
-    <script src="https://publisher.linkvertise.com/cdn/linkvertise.js"></script>
-    <script src="index.js"></script>
-  </body>
+<head>
+	<title>Random Link Generator</title>
+	<style type="text/css">
+		a {
+			display: block;
+			font-size: 24px;
+			margin-top: 50px;
+			text-align: center;
+			text-decoration: none;
+			color: #000;
+			border: 2px solid #000;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<a id="random-link">Click here for a random link</a>
+
+	<script type="text/javascript">
+		var links = [
+			"https://www.google.com",
+			"https://www.facebook.com",
+			"https://www.youtube.com",
+			"https://www.twitter.com",
+			"https://www.instagram.com"
+		];
+
+		var randomLink = links[Math.floor(Math.random() * links.length)];
+		document.getElementById("random-link").href = randomLink;
+	</script>
+</body>
 </html>

@@ -16,8 +16,8 @@
 		function generateCode() {
 			// Generate a random 6-digit code
 			var code = Math.floor(Math.random() * 900000) + 100000;
-			// Use the Linkvertise API to generate the link with the code
-			var linkvertiseLink = 'https://linkvertise.com/380230/' + code;
+			// Generate the Linkvertise link that redirects to display_code.html with the code as a query parameter
+			var linkvertiseLink = 'https://link-to-display-code-html.com?code=' + code;
 			linkvertise(linkvertiseLink, {whitelist: [], blacklist: ["D"]});
 			// Display the code and Linkvertise link to the user
 			document.getElementById("code").innerHTML = 'Your code is: ' + code;

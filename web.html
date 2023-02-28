@@ -2,12 +2,14 @@
 <html>
   <head>
     <title>Linkvertise Generator</title>
-    <script src="https://publisher.linkvertise.com/cdn/linkvertise.js"></script>
     <script>
       function generateLink() {
         var code = generateRandomCode(); // Generate a random code
         var url = "https://midsetup.netlify.app/display.html?code=" + code; // Construct the destination URL
-        linkvertise(380230, { destination: url, type: 'banner' }); // Generate the Linkvertise link and redirect the user
+        var link = document.createElement("a"); // Create a new hyperlink element
+        link.href = "https://publisher.linkvertise.com/api/v1/redirect/link/static/380230/" + encodeURIComponent(url); // Construct the Linkvertise link URL with the destination URL as a query parameter
+        link.textContent = "Click here to access the Linkvertise link"; // Set the hyperlink text
+        document.body.appendChild(link); // Add the hyperlink to the document
       }
       
       function generateRandomCode() {

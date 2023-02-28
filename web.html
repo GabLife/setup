@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Linkvertise Code Generator</title>
+	<!-- Include the Linkvertise API -->
+	<script src="https://publisher.linkvertise.com/cdn/linkvertise.js"></script>
+</head>
+<body>
+	<h1>Linkvertise Code Generator</h1>
+	<!-- Placeholder for the generated code -->
+	<p id="code"></p>
+	<!-- Placeholder for the Linkvertise link -->
+	<p id="link"></p>
+	<!-- Script to generate the code and Linkvertise link -->
+	<script>
+		function generateCode() {
+			// Generate a random 6-digit code
+			var code = Math.floor(Math.random() * 900000) + 100000;
+			// Use the Linkvertise API to generate the link with the code
+			var linkvertiseLink = 'https://linkvertise.com/380230/' + code;
+			linkvertise(linkvertiseLink, {whitelist: [], blacklist: ["D"]});
+			// Display the code and Linkvertise link to the user
+			document.getElementById("code").innerHTML = 'Your code is: ' + code;
+			document.getElementById("link").innerHTML = '<a href="' + linkvertiseLink + '">Click here to get your code</a>';
+		}
+		// Call the generateCode function on page load
+		window.onload = generateCode;
+	</script>
+</body>
+</html>

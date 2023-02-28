@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Display Code</title>
+</head>
+<body>
+	<h1>Your Code is:</h1>
+	<p id="code"></p>
+	<!-- Script to display the code -->
+	<script>
+		// Get the code from the query parameter
+		var code = new URLSearchParams(window.location.search).get("code");
+		// Display the code on the page
+		document.getElementById("code").innerHTML = code;
+	</script>
+</body>
+</html>

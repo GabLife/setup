@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Linkvertise Generator</title>
-  <script src="https://publisher.linkvertise.com/cdn/linkvertise.js"></script>
-  <script>
-    function generateLink() {
-      var code = generateRandomCode(); // Generate a random code
-      var url = "https://midsetup.netlify.app/display.html?code=" + code; // Construct the destination URL
-      linkvertise(380230, {whitelist: [], blacklist: ["D"], destination: url}); // Generate the Linkvertise link and redirect the user
-    }
-    
-    function generateRandomCode() {
-      // Generate a random 6-digit code
-      var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      var code = "";
-      for (var i = 0; i < 6; i++) {
-        code += chars.charAt(Math.floor(Math.random() * chars.length));
+  <head>
+    <title>Linkvertise Generator</title>
+    <script src="https://publisher.linkvertise.com/cdn/linkvertise.js"></script>
+    <script>
+      function generateLink() {
+        var code = generateRandomCode(); // Generate a random code
+        var url = "https://midsetup.netlify.app/display.html?code=" + code; // Construct the destination URL
+        linkvertise(380230, { destination: url, type: 'banner' }); // Generate the Linkvertise link and redirect the user
       }
-      return code;
-    }
-  </script>
-</head>
-<body>
-  <h1>Linkvertise Generator</h1>
-  <p>Press the button below to generate a Linkvertise link:</p>
-  <button onclick="generateLink()">Generate Linkvertise Link</button>
-</body>
+      
+      function generateRandomCode() {
+        // Generate a random 6-digit code
+        var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var code = "";
+        for (var i = 0; i < 6; i++) {
+          code += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return code;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Linkvertise Generator</h1>
+    <p>Press the button below to generate a Linkvertise link:</p>
+    <button onclick="generateLink()">Generate Linkvertise Link</button>
+  </body>
 </html>

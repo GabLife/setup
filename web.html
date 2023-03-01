@@ -1,37 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Random Link Generator</title>
-	<style type="text/css">
-		a {
-			display: block;
-			font-size: 24px;
-			margin-top: 50px;
-			text-align: center;
-			text-decoration: none;
-			color: #000;
-			border: 2px solid #000;
-			padding: 10px 20px;
-			border-radius: 5px;
-			cursor: pointer;
-		}
-	</style>
-	<script src="https://publisher.linkvertise.com/cdn/linkvertise.js"></script><script>linkvertise(380230, {whitelist: [], blacklist: []});</script>
-</head>
-<body>
-	<a id="random-link">Click here for a random link</a>
+  <head>
+    <title>Link Generator</title>
+    <script src="https://publisher.linkvertise.com/cdn/linkvertise.js"></script>
+  </head>
+  <body>
+    <h1>Link Generator</h1>
+    <label for="link-input">Enter link:</label>
+    <input type="text" id="link-input">
+    <button onclick="generateLink()">Generate Link</button>
+    <div id="output"></div>
 
-	<script type="text/javascript">
-		var links = [
-			"https://www.google.com",
-			"https://www.facebook.com",
-			"https://www.youtube.com",
-			"https://www.twitter.com",
-			"https://www.instagram.com"
-		];
+    <script>
+      function generateLink() {
+        var link = document.getElementById("link-input").value;
+        var output = document.getElementById("output");
+        var linkId = "link-" + Date.now(); // generate a unique id for the link div
+        output.innerHTML += "<div id='" + linkId + "'><a href='" + link + "'>" + link + "</a></div>";
 
-		var randomLink = links[Math.floor(Math.random() * links.length)];
-		document.getElementById("random-link").href = randomLink;
-	</script>
-</body>
+        // apply the linkvertise function to the generated link
+        linkvertise(380230, {whitelist: [], blacklist: ["D"]}, document.getElementById(linkId).querySelector("a"));
+      }
+
+      // apply the linkvertise function to all anchor tags on the webpage
+      linkvertise(380230, {whitelist: [], blacklist: ["D"]}, document.getElementsByTagName("a"));
+    </script>
+  </body>
 </html>
